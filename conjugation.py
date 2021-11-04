@@ -20,7 +20,6 @@
 
 
 import requests
-import reprlib
 
 URL = 'http://www-personal.umich.edu/~jlawler/wordlist'
 page = requests.get(URL)
@@ -53,15 +52,19 @@ splittedpagetext = page.text.split()
 
 
 
-
+### try out new way of looking into wordslist for words 
+### that are in word and printing them out one by one 
+### collect them together and then sort through them in a list 
+### to find combinations to fit the word we got in the first place 
 
 ########## close one but doesnt work properly
 
-# subwords=''
-# temptext=''
-# originalword = 'something'
-# word='something'
-# testlist = ['some', 'thing']
+subwords=''
+temptext=''
+originalword = 'awesome'
+word='awesome'
+
+#testlist = ['some', 'thing']
 
 # while subwords != originalword:
 #     for i in range(len(word)):
