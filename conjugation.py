@@ -52,7 +52,7 @@ splittedpagetext = page.text.split()
 
 subwords = []
 subwordstext = []
-originalword = 'somewhere'
+originalword = 'pancake'
 
 for i in splittedpagetext:
     if i in originalword and len(i) > 1 and i != originalword:
