@@ -20,6 +20,7 @@
 
 
 import requests
+import random
 
 URL = 'http://www-personal.umich.edu/~jlawler/wordlist'
 page = requests.get(URL)
@@ -49,7 +50,45 @@ splittedpagetext = page.text.split()
 # subwords = []
 
 
+subwords = []
+subwordstext = []
+originalword = 'somewhere'
 
+for i in splittedpagetext:
+    if i in originalword and len(i) > 1 and i != originalword:
+        subwords.append(i)
+
+print(subwords)
+print("Combination to make the word", originalword, "are:")
+
+# for index, i in enumerate(subwords):
+#     subwordstext.append(i)
+#     tempcheck = ''.join(subwordstext)
+#     correctlengthword = originalword[:len(tempcheck)]
+#     correcttofillword = originalword[len(tempcheck):]
+#     print(correctlengthword, correcttofillword)
+#     if tempcheck != correctlengthword:
+#         del(subwordstext[-1])
+#     if correcttofillword in subwords:
+#         subwordstext.append(correcttofillword)
+
+def figureoutwords():
+    for i in subwords:
+        subwordstext.append(i)
+        tempcheck = ''.join(subwordstext)
+        correctlengthword = originalword[:len(tempcheck)]
+        correcttofillword = originalword[len(tempcheck):]
+        if tempcheck != correctlengthword:
+            del(subwordstext[-1])
+        if correcttofillword in subwords:
+            subwordstext.append(correcttofillword)
+
+while ''.join(subwordstext) != originalword:
+    subwordstext = []
+    random.shuffle(subwords)
+    figureoutwords()
+
+print(subwordstext)
 
 
 ### try out new way of looking into wordslist for words 
@@ -57,12 +96,9 @@ splittedpagetext = page.text.split()
 ### collect them together and then sort through them in a list 
 ### to find combinations to fit the word we got in the first place 
 
-########## close one but doesnt work properly
+# take a look at itertools permutations 
 
-subwords=''
-temptext=''
-originalword = 'awesome'
-word='awesome'
+########## close one but doesnt work properly
 
 #testlist = ['some', 'thing']
 
